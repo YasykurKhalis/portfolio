@@ -1,11 +1,116 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = await getCollection('projects');
+
+const primaryStack = [
+  "C", "Python", "TypeScript", "Linux", "Docker", "Suricata", "Astro", "React"
+];
+
+const interests = [
+  "Intrusion Detection Systems", "Container Security", "Machine Learning Pipelines"
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | IT & Systems</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen py-16 px-4">
+    <main class="max-w-3xl mx-auto space-y-12">
+      
+      <!-- Hero Header -->
+      <section class="space-y-3">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-100">
+          Information Technology Student
+        </h1>
+        <p class="text-slate-400 text-lg">
+          Focused on network security architecture, low-level systems, and infrastructure automation.
+        </p>
+      </section>
+
+      <!-- Option 3: Technical Bio Card -->
+      <section class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-6">
+        <h2 class="text-xl font-semibold text-slate-100 border-b border-slate-800/80 pb-3">
+          Overview & Stack
+        </h2>
+        
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <h3 class="text-xs uppercase tracking-wider font-mono text-slate-400 mb-1">
+              Education
+            </h3>
+            <p class="text-slate-200 font-medium">B.S. in Information Technology</p>
+            <p class="text-slate-400 text-sm">Expected Graduation: 2027</p>
+          </div>
+
+          <div>
+            <h3 class="text-xs uppercase tracking-wider font-mono text-slate-400 mb-1">
+              Core Focus
+            </h3>
+            <p class="text-slate-200 font-medium">
+              Network Security & Systems Programming
+            </p>
+            <p class="text-slate-400 text-sm">Security Operations (SOC) & Infrastructure</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xs uppercase tracking-wider font-mono text-slate-400 mb-2.5">
+            Primary Stack
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {primaryStack.map((tech) => (
+              <span class="text-xs font-mono text-sky-300 bg-sky-950/60 border border-sky-800/60 px-2.5 py-1 rounded-md">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xs uppercase tracking-wider font-mono text-slate-400 mb-2">
+            Current Interests
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {interests.map((item) => (
+              <span class="text-xs font-mono text-slate-300 bg-slate-800/80 border border-slate-700/80 px-2.5 py-1 rounded-md">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="space-y-6">
+        <h2 class="text-2xl font-semibold border-b border-slate-800 pb-2">
+          Featured Projects
+        </h2>
+        
+        <div class="grid gap-4 sm:grid-cols-2">
+          {projects.map((project) => (
+            <a 
+              href={`/projects/${project.id}`} 
+              class="block p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-sky-500 transition-colors space-y-3"
+            >
+              <h3 class="text-lg font-medium text-slate-100">{project.data.title}</h3>
+              <p class="text-slate-400 text-sm line-clamp-2">{project.data.description}</p>
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                {project.data.tags.map((tag) => (
+                  <span class="text-[11px] font-mono text-sky-400 bg-sky-950/50 border border-sky-900/40 px-2 py-0.5 rounded">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

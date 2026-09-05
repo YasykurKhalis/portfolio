@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<!lh-html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{project.data.title}</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen py-12 px-4">
+    <main class="max-w-3xl mx-auto">
+      <a href="/" class="text-sm text-sky-400 hover:underline">&larr; Back to Home</a>
+      
+      <h1 class="text-4xl font-bold mt-4 mb-2">{project.data.title}</h1>
+      <p class="text-slate-400 text-lg mb-4">{project.data.description}</p>
+
+      <div class="flex gap-2 mb-8">
+        {project.data.tags.map((tag) => (
+          <span class="bg-slate-800 text-sky-300 text-xs font-mono px-2.5 py-1 rounded-md border border-slate-700">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <hr class="border-slate-800 my-8" />
+
+      <article class="prose prose-invert max-w-none">
+        <Content />
+      </article>
+    </main>
+  </body>
+</html>
