@@ -12,3 +12,20 @@ export function initHeroAnimation(): void {
 }
 
 document.addEventListener("DOMContentLoaded", initHeroAnimation);
+
+function initEducationScrollAnimation(): void {
+  const educationSection = document.querySelector<HTMLElement>(".education-scroll-animate");
+
+  if (!educationSection) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      educationSection.classList.toggle("is-visible", entry.isIntersecting);
+    },
+    { threshold: 0.2 },
+  );
+
+  observer.observe(educationSection);
+}
+
+document.addEventListener("DOMContentLoaded", initEducationScrollAnimation);

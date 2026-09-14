@@ -40,6 +40,19 @@
   font-weight: 700;
 }
 
+.education-scroll-animate > h1,
+.education-scroll-animate .education-timeline,
+.education-scroll-animate .education-item {
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.education-scroll-animate.is-visible > h1,
+.education-scroll-animate.is-visible .education-timeline,
+.education-scroll-animate.is-visible .education-item {
+  opacity: 1;
+}
+
 .education-timeline {
   position: relative;
   max-width: 900px;
@@ -52,7 +65,7 @@
   position: absolute;
   top: 0.5rem;
   bottom: 8rem;
-  left: 1rem;
+  left: 0.97rem;
   width: 2px;
   background: rgba(255, 255, 255, 0.45);
   content: "";
@@ -71,7 +84,7 @@
   width: 2rem;
   height: 2rem;
   margin-top: 0.25rem;
-  border: 5px solid #991b1b;
+  border: 5px solid #636363;
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.18);
