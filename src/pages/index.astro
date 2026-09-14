@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import '../styles/global.css'
 import '@fontsource/jetbrains-mono';
+import itsLogo from '../assets/Lambang-ITS.png';
+import smantaruLogo from '../assets/smantaru.png';
 
 const projects = await getCollection('projects');
 
@@ -32,7 +34,7 @@ const projects = await getCollection('projects');
       <!-- </section> -->
       
       <!-- bio -->
-      <section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center">
+      <section class="bio-scroll-animate" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center">
         <img class="hero-animate mugshot opacity-0 translate-y-8 transition-all duration-1000 ease-out" src="src/assets/me5.png" alt="Mugshot" style="margin-bottom: 20px"/>
         <div class="w-full max-w-300">
           <h1 class="hero-animate opacity-0 translate-y-8 transition-all duration-[1500ms] ease-out w-full" style="font-size: 48px; font-weight: bold; margin-bottom: 20px" data-delay="200">
@@ -54,6 +56,7 @@ const projects = await getCollection('projects');
             <div class="education-content">
               <h2>Institut Teknologi Sepuluh Nopember</h2>
               <p>Information Technology Undergraduate</p>
+              <img class="education-logo" src="src/assets/its.png"/>
             </div>
           </li>
           
@@ -62,14 +65,26 @@ const projects = await getCollection('projects');
             <div class="education-content">
               <h2>SMA Negeri 1 Waru</h2>
               <p>Mathematics and Science Track</p>
+              <img class="education-logo" src="src/assets/smantaru.png"/>
             </div>
           </li>
 
         </ol>
       </section>
+      
+      <!-- Experience -->
+      <section>
+        <h1>Experience</h1>
+      </section>
 
-      <section style="min-height: 100vh">
-        
+      <!-- Training -->
+      <section>
+        <h1>Training</h1>
+      </section>
+
+      <!-- Certification -->
+      <section>
+        <h1>Certification</h1>
       </section>
 
     </main>

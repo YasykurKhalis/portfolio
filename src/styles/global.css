@@ -40,17 +40,15 @@
   font-weight: 700;
 }
 
+.bio-scroll-animate > img,
+.bio-scroll-animate > div {
+  transition: opacity 100ms linear;
+}
+
 .education-scroll-animate > h1,
 .education-scroll-animate .education-timeline,
 .education-scroll-animate .education-item {
-  opacity: 0;
-  transition: opacity 700ms ease;
-}
-
-.education-scroll-animate.is-visible > h1,
-.education-scroll-animate.is-visible .education-timeline,
-.education-scroll-animate.is-visible .education-item {
-  opacity: 1;
+  transition: opacity 100ms linear;
 }
 
 .education-timeline {
@@ -63,9 +61,9 @@
 
 .education-timeline::before {
   position: absolute;
-  top: 0.5rem;
-  bottom: 8rem;
-  left: 0.97rem;
+  top: 1rem;
+  bottom: 9rem;
+  left: 0.95rem;
   width: 2px;
   background: rgba(255, 255, 255, 0.45);
   content: "";
@@ -91,7 +89,18 @@
 }
 
 .education-content {
+  position: relative;
   padding-bottom: 3rem;
+}
+
+.education-logo {
+  position: absolute;
+  top: 25%;
+  right: 0;
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  transform: translateY(-50%);
 }
 
 .education-content h2 {
@@ -118,5 +127,10 @@
 
   .education-item {
     gap: 1.25rem;
+  }
+
+  .education-logo {
+    width: 3.5rem;
+    height: 3.5rem;
   }
 }

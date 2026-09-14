@@ -13,19 +13,53 @@ export function initHeroAnimation(): void {
 
 document.addEventListener("DOMContentLoaded", initHeroAnimation);
 
-function initEducationScrollAnimation(): void {
-  const educationSection = document.querySelector<HTMLElement>(".education-scroll-animate");
+function initCenterFadeAnimation(sectionSelector: string, elementsSelector: string): void {
+  const section = document.querySelector<HTMLElement>(sectionSelector);
 
-  if (!educationSection) return;
+  if (!section) return;
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      educationSection.classList.toggle("is-visible", entry.isIntersecting);
-    },
-    { threshold: 0.2 },
-  );
+  const animatedElements = section.querySelectorAll<HTMLElement>(elementsSelector);
+  let animationFrame = 0;
 
-  observer.observe(educationSection);
+  const updateOpacity = (): void => {
+    animationFrame = 0;
+
+    const sectionBounds = section.getBoundingClientRect();
+    const sectionCenter = sectionBounds.top + sectionBounds.height / 2;
+    const viewportCenter = window.innerHeight / 2;
+    const comfortZone = window.innerHeight * 0.15;
+    const fadeDistance = window.innerHeight * 0.55;
+    const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
+    const opacity = Math.max(
+      0,
+      1 - Math.max(0, distanceFromCenter - comfortZone) / fadeDistance,
+    );
+
+    animatedElements.forEach((element) => {
+      element.style.opacity = opacity.toString();
+    });
+  };
+
+  const requestOpacityUpdate = (): void => {
+    if (!animationFrame) {
+      animationFrame = window.requestAnimationFrame(updateOpacity);
+    }
+  };
+
+  window.addEventListener("scroll", requestOpacityUpdate, { passive: true });
+  window.addEventListener("resize", requestOpacityUpdate);
+  updateOpacity();
 }
 
-document.addEventListener("DOMContentLoaded", initEducationScrollAnimation);
+function initScrollAnimations(): void {
+  initCenterFadeAnimation(
+    ".bio-scroll-animate",
+    ":scope > img, :scope > div",
+  );
+  initCenterFadeAnimation(
+    ".education-scroll-animate",
+    ":scope > h1, .education-timeline, .education-item",
+  );
+}
+
+document.addEventListener("DOMContentLoaded", initScrollAnimations);
