@@ -15,7 +15,8 @@ const projects = await getCollection('projects');
     <title>Portfolio | IT & Systems</title>
   </head>
 
-  <body class="min-h-screen bg-gradient-to-br from-red-600 to-black text-white font-mono">
+  <!-- <body class="min-h-screen bg-gradient-to-br from-gray-600 to-black text-white font-mono"> -->
+  <body class="min-h-screen text-white font-mono" style="background-color: black">
     <main>
       <!-- Hero Header -->
       <!-- <section class="box font-mono" style="display: flex; justify-content: center; align-items: center; text-align: left;"> -->
@@ -29,35 +30,46 @@ const projects = await getCollection('projects');
       <!--     </p> -->
       <!--   </div> -->
       <!-- </section> -->
-
+      
+      <!-- bio -->
       <section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center">
         <img class="hero-animate mugshot opacity-0 translate-y-8 transition-all duration-1000 ease-out" src="src/assets/me5.png" alt="Mugshot" style="margin-bottom: 20px"/>
-        <div class="w-full max-w-200">
-          <h1 class="hero-animate opacity-0 translate-y-8 transition-all duration-[1500ms] ease-out w-full max-w-200" style="font-size: 32px; font-weight: bold; margin-bottom: 20px" data-delay="200">
+        <div class="w-full max-w-300">
+          <h1 class="hero-animate opacity-0 translate-y-8 transition-all duration-[1500ms] ease-out w-full" style="font-size: 48px; font-weight: bold; margin-bottom: 20px" data-delay="200">
             Yasykur Khalis Jati Maulana Yuwono
           </h1>
-          <p class="hero-animate opacity-0 translate-y-8 transition-all duration-[1500ms] ease-out w-full max-w-200" style="text-align: center; margin-bottom: 20px" data-delay="400">
+          <p class="hero-animate opacity-0 translate-y-8 transition-all duration-[1500ms] ease-out w-full" style="font-size: 32px; text-align: center; margin-bottom: 20px" data-delay="400">
           Information Technology undergraduate student that has an interest in AI and Cloud Computing. Having an experience on optimizing AI models and maintaining servers with some linux experience.
           </p>
         </div>
       </section>
+      
+      <!-- education -->
+      <section class="education-section">
+        <h1 style="font-size: 48px">Education</h1>
+        <ol class="education-timeline">
 
-      <section style="min-height: 25vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; font-size: 32px; font-weight: bold"> 
-        <h1>
-          Education
-        </h1>
+          <li class="education-item">
+            <div class="education-marker" aria-hidden="true"></div>
+            <div class="education-content">
+              <h2>Institut Teknologi Sepuluh Nopember</h2>
+              <p>Information Technology Undergraduate</p>
+            </div>
+          </li>
+          
+          <li class="education-item">
+            <div class="education-marker" aria-hidden="true"></div>
+            <div class="education-content">
+              <h2>SMA Negeri 1 Waru</h2>
+              <p>Mathematics and Science Track</p>
+            </div>
+          </li>
+
+        </ol>
       </section>
 
       <section>
-        <h2>
-          Institut Teknologi Sepuluh Nopember
-          <p>
-          Information Technology Undergraduate
-          </p>
-        </h2>
-        <h2>
-          SMANtaru
-        </h2>
+        
       </section>
 
     </main>
