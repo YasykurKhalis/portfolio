@@ -28,12 +28,31 @@
   margin-right: 100px;
 }
 
-.education-section {
+.timeline-section {
   min-height: 25vh;
   padding: 8rem 1.5rem;
 }
 
-.education-section > h1 {
+.timeline-section.bg-white {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.timeline-section.bg-white .timeline-content p {
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.timeline-section.bg-white .timeline-list::before {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.timeline-section.bg-white .timeline-marker {
+  border: 5px solid #a0a0a0;
+  background: #000000;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-section > h1 {
   margin: 0 auto 5rem;
   text-align: center;
   font-size: clamp(2.75rem, 8vw, 5rem);
@@ -45,13 +64,13 @@
   transition: opacity 100ms linear;
 }
 
-.education-scroll-animate > h1,
-.education-scroll-animate .education-timeline,
-.education-scroll-animate .education-item {
+.timeline-scroll-animate > h1,
+.timeline-scroll-animate .timeline-list,
+.timeline-scroll-animate .timeline-item {
   transition: opacity 100ms linear;
 }
 
-.education-timeline {
+.timeline-list {
   position: relative;
   max-width: 900px;
   margin: 0 auto;
@@ -59,7 +78,7 @@
   list-style: none;
 }
 
-.education-timeline::before {
+.timeline-list::before {
   position: absolute;
   top: 1rem;
   bottom: 9rem;
@@ -69,7 +88,7 @@
   content: "";
 }
 
-.education-item {
+.timeline-item {
   position: relative;
   display: grid;
   grid-template-columns: 2rem 1fr;
@@ -77,7 +96,7 @@
   min-height: 10rem;
 }
 
-.education-marker {
+.timeline-marker {
   z-index: 1;
   width: 2rem;
   height: 2rem;
@@ -88,12 +107,12 @@
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.18);
 }
 
-.education-content {
+.timeline-content {
   position: relative;
   padding-bottom: 3rem;
 }
 
-.education-logo {
+.timeline-logo {
   position: absolute;
   top: 25%;
   right: 0;
@@ -103,13 +122,13 @@
   transform: translateY(-50%);
 }
 
-.education-content h2 {
+.timeline-content h2 {
   margin: 0 0 0.75rem;
   font-size: clamp(1.35rem, 3vw, 2rem);
   line-height: 1.25;
 }
 
-.education-content p {
+.timeline-content p {
   margin: 0;
   color: rgba(255, 255, 255, 0.78);
   font-size: clamp(1rem, 2vw, 1.25rem);
@@ -117,19 +136,19 @@
 }
 
 @media (max-width: 640px) {
-  .education-section {
+  .timeline-section {
     padding: 5rem 1.25rem;
   }
 
-  .education-section > h1 {
+  .timeline-section > h1 {
     margin-bottom: 3.5rem;
   }
 
-  .education-item {
+  .timeline-item {
     gap: 1.25rem;
   }
 
-  .education-logo {
+  .timeline-logo {
     width: 3.5rem;
     height: 3.5rem;
   }

@@ -57,8 +57,8 @@ function initScrollAnimations(): void {
     ":scope > img, :scope > div",
   );
   initCenterFadeAnimation(
-    ".education-scroll-animate",
-    ":scope > h1, .education-timeline, .education-item",
+    ".timeline-scroll-animate",
+    ":scope > h1, .timeline-list, .timeline-item",
   );
 }
 

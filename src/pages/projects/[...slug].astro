@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -13,13 +14,7 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<!lh-html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{project.data.title}</title>
-  </head>
-  <body class="bg-slate-950 text-slate-100 min-h-screen py-12 px-4">
+<Layout title={project.data.title} bodyClass="bg-slate-950 text-slate-100 min-h-screen py-12 px-4">
     <main class="max-w-3xl mx-auto">
       <a href="/" class="text-sm text-sky-400 hover:underline">&larr; Back to Home</a>
       
@@ -40,5 +35,4 @@ const { Content } = await render(project);
         <Content />
       </article>
     </main>
-  </body>
-</html>
+</Layout>
